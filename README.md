@@ -1,8 +1,8 @@
-# 🎁 Lista de Regalos - Wish List App
+# Lista de Regalos - Wish List App
 
 Una aplicación web simple para gestionar una lista de regalos compartida, construida con React, TypeScript, Vite y Firebase.
 
-## 🚀 Características
+## Características
 
 - ✅ **Mobile First Design** - Optimizada para dispositivos móviles
 - ✅ **Interfaz Intuitiva** - Fácil de usar para cualquier usuario
@@ -12,7 +12,7 @@ Una aplicación web simple para gestionar una lista de regalos compartida, const
 - ✅ **Loading States** - Skeleton loaders y manejo de errores
 - ✅ **Responsive Design** - Funciona en cualquier dispositivo
 
-## 🛠 Stack Tecnológico
+## Stack Tecnológico
 
 - **Frontend**: React 18 + TypeScript
 - **Bundler**: Vite
@@ -20,13 +20,13 @@ Una aplicación web simple para gestionar una lista de regalos compartida, const
 - **Backend**: Firebase Firestore
 - **Deploy**: Vercel (recomendado)
 
-## 📋 Requisitos
+## Requisitos
 
 - Node.js 18+
 - npm o yarn
 - Cuenta de Firebase (gratuita)
 
-## 🚀 Instalación y Configuración
+## Instalación y Configuración
 
 ### 1. Clonar el proyecto
 
@@ -73,7 +73,7 @@ const firebaseConfig = {
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 ```
 
@@ -84,95 +84,6 @@ npm run dev
 ```
 
 La aplicación estará disponible en `http://localhost:5173`
-
-## 🎯 Uso de la Aplicación
-
-1. **Ver Regalos Disponibles**: Los regalos no seleccionados aparecen en verde
-2. **Seleccionar un Regalo**: Haz clic en "Lo compro" para marcarlo como seleccionado
-3. **Liberar un Regalo**: Si te arrepientes, haz clic en "Liberar" para desmarcarlo
-4. **Ver Estadísticas**: El panel superior muestra cuántos regalos están disponibles y seleccionados
-
-## 📱 Estructura de Componentes
-
-```
-src/
-├── components/
-│   ├── WishItem.tsx       # Componente individual de regalo
-│   ├── WishList.tsx       # Lista principal de regalos
-│   └── SkeletonLoader.tsx # Loading skeleton
-├── services/
-│   └── wishService.ts     # Servicio de Firebase
-├── firebase/
-│   └── config.ts          # Configuración de Firebase
-├── types/
-│   └── index.ts           # Tipos TypeScript
-└── App.tsx                # Componente principal
-```
-
-## 🚀 Deploy en Vercel
-
-### Método 1: GitHub Integration (Recomendado)
-
-1. Sube tu código a GitHub
-2. Ve a [Vercel](https://vercel.com/)
-3. Importa tu repositorio de GitHub
-4. Configura las variables de entorno en Vercel
-5. Deploy automático
-
-### Método 2: CLI de Vercel
-
-```bash
-# Instalar Vercel CLI
-npm install -g vercel
-
-# Login en Vercel
-vercel login
-
-# Deploy
-vercel --prod
-```
-
-### Variables de Entorno en Vercel
-
-Configura estas variables en el dashboard de Vercel:
-
-```
-VITE_FIREBASE_API_KEY
-VITE_FIREBASE_AUTH_DOMAIN
-VITE_FIREBASE_PROJECT_ID
-VITE_FIREBASE_STORAGE_BUCKET
-VITE_FIREBASE_MESSAGING_SENDER_ID
-VITE_FIREBASE_APP_ID
-```
-
-## 🔧 Configuración de Firestore
-
-Para producción, configura las reglas de Firestore en Firebase Console:
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /wishList/{documentId} {
-      allow read, write: if true;
-    }
-  }
-}
-```
-
-## 🎨 Personalización
-
-### Cambiar la Lista de Regalos
-
-Edita el archivo `src/services/wishService.ts`:
-
-```typescript
-const DEFAULT_ITEMS: Omit<WishItem, 'selected'>[] = [
-  { id: 1, name: "Tu Regalo 1", image: "URL_IMAGEN" },
-  { id: 2, name: "Tu Regalo 2", image: "URL_IMAGEN" },
-  // Agrega más regalos...
-];
-```
 
 ### Personalizar Colores
 
@@ -193,14 +104,6 @@ theme: {
 }
 ```
 
-## 🐛 Troubleshooting
-
-### Problemas Comunes
-
-1. **Error de Firebase**: Verifica que las credenciales sean correctas
-2. **Error de CORS**: Habilita CORS en Firebase Console
-3. **Build fallido**: Verifica las variables de entorno en producción
-
 ### Comandos Útiles
 
 ```bash
@@ -213,21 +116,3 @@ npm run lint
 # Preview de producción
 npm run preview
 ```
-
-## 📄 Licencia
-
-MIT License - Siéntete libre de usar este proyecto para tus necesidades.
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una feature branch
-3. Commit tus cambios
-4. Push a la branch
-5. Abre un Pull Request
-
----
-
-**¡Disfruta de tu aplicación de lista de regalos! 🎉**
