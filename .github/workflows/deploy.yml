@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
@@ -36,7 +37,9 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-      - name: Deploy to gh-pages
+      - name: Deploy to GitHub Pages
         run: |
           npm install -g gh-pages
-          gh-pages -d dist
+          gh-pages -d dist \
+            -u "github-actions <github-actions@github.com>" \
+            -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
