@@ -3,12 +3,17 @@ import { WishItem } from "../types";
 import { wishService } from "../services/wishService";
 import WishItemComponent from "./WishItem";
 import SkeletonLoader from "./SkeletonLoader";
+import ImageModal from "./ImageModal";
 
 const WishList: React.FC = () => {
   const [items, setItems] = useState<WishItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [updatingItems, setUpdatingItems] = useState<Set<string>>(new Set());
+  const [modalImage, setModalImage] = useState<{
+    url: string;
+    name: string;
+  } | null>(null);
 
   useEffect(() => {
     loadItems();
@@ -66,6 +71,14 @@ const WishList: React.FC = () => {
         return newSet;
       });
     }
+  };
+
+  const handleImageClick = (imageUrl: string, itemName: string) => {
+    setModalImage({ url: imageUrl, name: itemName });
+  };
+
+  const closeModal = () => {
+    setModalImage(null);
   };
 
   const availableItems = items.filter((item) => !item.selected);
@@ -128,6 +141,7 @@ const WishList: React.FC = () => {
                 key={item.id}
                 item={item}
                 onToggle={handleToggleItem}
+                onImageClick={handleImageClick}
                 isLoading={updatingItems.has(item.id)}
               />
             ))}
@@ -147,6 +161,7 @@ const WishList: React.FC = () => {
                 key={item.id}
                 item={item}
                 onToggle={handleToggleItem}
+                onImageClick={handleImageClick}
                 isLoading={updatingItems.has(item.id)}
               />
             ))}
@@ -166,6 +181,14 @@ const WishList: React.FC = () => {
           </p>
         </div>
       )}
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={modalImage !== null}
+        onClose={closeModal}
+        imageUrl={modalImage?.url}
+        itemName={modalImage?.name}
+      />
     </div>
   );
 };

@@ -20,12 +20,25 @@ function App() {
               actualizan en tiempo real para todos.
             </p>
           </div>
-          <div className="max-w-2xl mx-auto mt-4 text-sm text-gray-500 bg-yellow-50 rounded-lg p-4">
-            <p className="text-center mt-2">
-              <strong>⚠️ Muy importante:</strong> Si querés regalar otra cosa
-              que no está en la lista no hay problema y siempre tené en cuenta
-              que <strong>tu presencia es el regalo más lindo.</strong>
-            </p>
+          <div className="max-w-2xl mx-auto mt-6 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl p-6 shadow-sm">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-3">
+                <span className="text-2xl">💝</span>
+              </div>
+              <h3 className="text-lg font-semibold text-purple-900 mb-2">
+                Lo más importante es tu presencia
+              </h3>
+              <p className="text-purple-700 leading-relaxed">
+                Si querés regalar otra cosa que no está en la lista no hay
+                problema.
+                <span className="font-semibold text-purple-900">
+                  {" "}
+                  Tu compañía y cariño son los regalos que más valoramos.
+                </span>
+                ¡Que estés ahí celebrando con nosotros es lo que realmente nos
+                hace felices! 🥰
+              </p>
+            </div>
           </div>
         </div>
       </header>

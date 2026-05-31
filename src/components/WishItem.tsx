@@ -4,14 +4,21 @@ import { WishItem as WishItemType } from "../types";
 interface WishItemProps {
   item: WishItemType;
   onToggle: (id: string, currentSelected: boolean) => void;
+  onImageClick: (imageUrl: string, itemName: string) => void;
   isLoading?: boolean;
 }
 
 const WishItem: React.FC<WishItemProps> = ({
   item,
   onToggle,
+  onImageClick,
   isLoading = false,
 }) => {
+  const handleImageClick = () => {
+    if (item.link) {
+      onImageClick(item.link, item.name);
+    }
+  };
   const handleToggle = () => {
     if (!isLoading) {
       onToggle(item.id, item.selected);
@@ -34,8 +41,10 @@ const WishItem: React.FC<WishItemProps> = ({
               <img
                 src={item.link}
                 alt={item.name}
-                className="w-16 h-16 object-cover rounded-lg"
+                className="w-16 h-16 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
                 loading="lazy"
+                onClick={handleImageClick}
+                title="Click para ver imagen más grande"
               />
             ) : (
               <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
